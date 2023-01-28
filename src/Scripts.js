@@ -100,9 +100,9 @@ const init = () =>{
     
     init();
   
-window.addEventListener("click", game);
+     window.addEventListener("click", game);
  
-  window.addEventListener("touchstart", game);
+    window.addEventListener("touchend",() =>{console.log("fffff") ;game();} );
   
   console.log(world);
   }, [])
@@ -198,10 +198,10 @@ const missedTheSpot = () =>{
   scene.remove(topLayer.threejs);
     // console.log(world);
     gameStart = false;
-    renderer.setAnimationLoop(null);
+    
+    
     
   setGameEnded(true);
-  renderer.setAnimationLoop(animation);
     // gameEnded = true;
     // gameEnded.current = true;
 }
@@ -330,6 +330,7 @@ function animation(time) {
   }
 
   if (topLayer.threejs.position[topLayer.direction] > 10) {
+    setTimeout(renderer.setAnimationLoop(null), 1000);
     missedTheSpot();
   }
 }

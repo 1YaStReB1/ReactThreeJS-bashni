@@ -15,7 +15,7 @@ const Result = ({score, setScore,startGame,gameEnded,setGameEnded}) => {
   <div className="content">
     <p>Гаме овер</p>
     <p>{`Ваш результат: ${score}`}</p>
-    <button onClick={()=>{setGameEnded(false); startGame(); setScore(2);}}>Рестарт</button>
+    <button onClick={()=>{setGameEnded(false); startGame(); setScore(1);}}>Рестарт</button>
    
   </div>
 </div>
