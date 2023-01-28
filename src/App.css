@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  overflow: hidden;
 }
 
 .App-logo {
@@ -36,3 +37,13 @@
     transform: rotate(360deg);
   }
 }
+
+.score {
+  position: absolute;
+  color: white;
+  font-size: 3em;
+  font-weight: bold;
+  top: 30px;
+  right: 30px;
+}
+

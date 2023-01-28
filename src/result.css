@@ -1,0 +1,37 @@
+.results {
+  position: absolute;
+  background-color: #fff;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  cursor: point;
+  z-index: 1000;
+}
+
+.results .content {
+  font-size: 40px;
+  max-width: 300px;
+  padding: 50px;
+  border-radius: 20px;
+}
+
+.results .content button {
+  font-size: 40px;
+  padding: 7px 10px;
+  background-color: rgb(21, 36, 200);
+  border: 5px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  opacity: 1;
+  cursor: pointer;
+  
+}
+
+.results .content button:hover{
+  box-shadow: 0 0 5px  rgb(0,0,0);
+}
