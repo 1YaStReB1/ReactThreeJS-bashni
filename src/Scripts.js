@@ -102,7 +102,7 @@ const init = () =>{
   
      window.addEventListener("click", game);
  
-    window.addEventListener("touchend",() =>{console.log("fffff") ;game();} );
+    // window.addEventListener("touchend",game);
   
   console.log(world);
   }, [])
