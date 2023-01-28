@@ -21,7 +21,7 @@ const [gameEnded, setGameEnded] = useState(false);
 
 
 const init = () =>{
-  console.log("INIT");
+  // console.log("INIT");
   // ---------------WORLD-------------------
   world = new CANNON.World();
   world.gravity.set(0,-10,0);
@@ -40,13 +40,6 @@ const init = () =>{
   
   //FIRST LAYER  
   addLayer(-10,0,originalBoxSize,originalBoxSize,"x");
-  
-  // ---------------BOX-------------------
-  // const boxGeometry = new THREE.BoxGeometry(3, 1, 3);
-  // const boxMaterial = new THREE.MeshLambertMaterial({ color: 0xfb8e00 });
-  // const box = new THREE.Mesh(boxGeometry, boxMaterial);
-  // scene.add(box);
-  // box.position.set(0, 0, 0);
   
   
   // ---------------LIGHT-------------------
@@ -104,7 +97,7 @@ const init = () =>{
  
     // window.addEventListener("touchend",game);
   
-  console.log(world);
+  // console.log(world);
   }, [])
   
 
@@ -185,7 +178,11 @@ const cutBox = (topLayer, overLap, size, delta) => {
 const missedTheSpot = () =>{
   // console.log("missedTheSpot");
   const topLayer = stack[stack.length - 1];
-
+  // console.log(renderer);
+  
+  // setTimeout(renderer.setAnimationLoop(null),20000);
+  // setTimeout(renderer.dispose(),5000);
+  // console.log(renderer);
     
   // Turn to top layer into an overhang and let it fall down
   addOverhang(
@@ -221,8 +218,8 @@ const startGame = () => {
 
   if (scene) {
     // Remove every Mesh from the scene
-    while (scene.children.find((c) => c.type == "Mesh")) {
-      const mesh = scene.children.find((c) => c.type == "Mesh");
+    while (scene.children.find((c) => c.type === "Mesh")) {
+      const mesh = scene.children.find((c) => c.type === "Mesh");
       scene.remove(mesh);
     }
 
@@ -247,18 +244,20 @@ let gameStart = false;
 const game = () =>{
   // console.log("GAME");
   // console.log(`world: ${world.bodies.length}`);
-
+  // console.log(gameEnded);
   
   // console.log(scene);
   // console.log(`scene: ${scene.children.length}`);
   if(!gameStart){
+    // console.log("start");
+    renderer.dispose();
     renderer.setAnimationLoop(animation);
     gameStart = true;
     
-  console.log(world);
+  // console.log(world);
   }
   else{
-    console.log(world);
+    // console.log(world);
     // score.current++;
     const topLayer = stack[stack.length - 1];
     const previousLayer = stack[stack.length - 2];
@@ -273,10 +272,9 @@ const game = () =>{
 
     const overhangSize = Math.abs(delta);
     const overlap = size - overhangSize;
-    console.log( overlap);
      if (overlap > 0) {
       setScore(prev => prev + 1);
-      console.log("FFFFFFFFFFFFFFf")
+      // console.log("FFFFFFFFFFFFFFf")
     cutBox(topLayer, overlap, size, delta);
 
     // Overhang
@@ -315,7 +313,7 @@ function animation(time) {
 
   
   //  console.log(world);
-  //  console.log(gameEnded);
+   
   
   // console.log(speed)
   // console.log(world);
@@ -331,6 +329,7 @@ function animation(time) {
 
   if (topLayer.threejs.position[topLayer.direction] > 10) {
     setTimeout(renderer.setAnimationLoop(null), 1000);
+    // console.log("gggg");
     missedTheSpot();
   }
 }
